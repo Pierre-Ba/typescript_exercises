@@ -8,6 +8,25 @@ interface weeklyReport {
     average: number;
 }
 
+interface targetAndDailyHours {
+    dailyTarget: number;
+    dailyHours: number[];
+}
+
+const checkArguments = (args: Array<string>): targetAndDailyHours => {
+  const dailyTarget = Number(args[2]);
+  let stringyDailyHours = args.slice(3);
+  const dailyHours = stringyDailyHours.map(hour => Number(hour));
+  if (dailyHours.every(element => typeof element === 'number'&& Number.isNaN(element) !== true) && !isNaN(Number(dailyTarget))) {
+      return {
+          dailyTarget: dailyTarget,
+          dailyHours: dailyHours
+      }
+  } else {
+      throw new Error("Provided values were not all numbers");
+  }
+}
+
 const calculateAverage = (arr: number[]): number => {
     const sum = arr.reduce((a, b) => a + b, 0);
     let result = sum / arr.length
@@ -20,7 +39,7 @@ const calculateTrainingDays = (arr: number[]): number => {
     return arrWithoutOffDays.length;
 }
 
-const calculateExercises = (dailyHours: number[], dailyTarget: number): weeklyReport => {
+const calculateExercises = (dailyTarget: number, dailyHours: number[]): weeklyReport => {
 const periodLength = dailyHours.length;
 const target = dailyTarget;
 console.log('periodLength: ', periodLength);
@@ -66,5 +85,17 @@ return {
 }
 }
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
+try {
+    const { dailyTarget, dailyHours } = checkArguments(process.argv);
+    console.log(calculateExercises(dailyTarget, dailyHours));
+  } catch (error: unknown) {
+    let errorMessage = "Something bad happened";
+    if (error instanceof Error) {
+      errorMessage += "Error : " + error.message;
+    }
+    console.log(errorMessage);
+  }
+
+
+//console.log(calculateExercises(2, [3, 0, 2, 4.5, 0, 3, 1]));
 
