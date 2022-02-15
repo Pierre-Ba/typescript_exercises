@@ -2,8 +2,8 @@ interface weeklyReport {
     periodLength: number;
     trainingDays: number;
     success: boolean;
-    rating: number;
-    ratingDescription: string;
+    rating: number | undefined;
+    ratingDescription: string | undefined;
     target: number;
     average: number;
 }

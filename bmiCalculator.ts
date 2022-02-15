@@ -1,3 +1,4 @@
+/*
 interface heightAndMass {
   height: number;
   mass: number;
@@ -16,8 +17,9 @@ const parseArguments = (args: Array<string>): heightAndMass => {
     throw new Error("Provided values were not numbers!");
   }
 };
+*/
 
-const calculateBmi = (height: number, mass: number): string => {
+ export const calculateBmi = (height: number, mass: number): string => {
   const heightInMeter = height / 100;
   const bmi = mass / Math.pow(heightInMeter, 2);
   console.log(bmi);
@@ -34,21 +36,25 @@ const calculateBmi = (height: number, mass: number): string => {
     return "Not normal(obesity class 2)";
   } else if (bmi >= 40) {
     return "Not normal(obesity class 3)"
+  } else {
+    return "Check the values you provided. It doesn't seem like they fall in any category";
   }
 };
 
 
-
+/*
 try {
   const { height, mass } = parseArguments(process.argv);
   console.log(calculateBmi(height, mass));
 } catch (error: unknown) {
   let errorMessage = "Something bad happened";
   if (error instanceof Error) {
-    errorMessage += "Error : " + error.message;
+    errorMessage += " Error : " + error.message;
   }
   console.log(errorMessage);
 }
+*/
+
 
 
 //console.log(calculateBmi(180, 74));
