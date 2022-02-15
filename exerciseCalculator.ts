@@ -17,7 +17,7 @@ const checkArguments = (args: Array<string>): targetAndDailyHours => {
   const dailyTarget = Number(args[2]);
   let stringyDailyHours = args.slice(3);
   const dailyHours = stringyDailyHours.map(hour => Number(hour));
-  if (dailyHours.every(element => typeof element === 'number'&& Number.isNaN(element) !== true) && !isNaN(Number(dailyTarget))) {
+  if (dailyHours.every(hour => typeof hour === 'number'&& Number.isNaN(hour) !== true) && !isNaN(Number(dailyTarget))) {
       return {
           dailyTarget: dailyTarget,
           dailyHours: dailyHours
