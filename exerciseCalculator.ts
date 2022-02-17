@@ -39,7 +39,7 @@ const calculateTrainingDays = (arr: number[]): number => {
     return arrWithoutOffDays.length;
 };
 
-const calculateExercises = (dailyTarget: number, dailyHours: number[]): weeklyReport => {
+export const calculateExercises = (dailyTarget: number, dailyHours: number[]): weeklyReport => {
 const periodLength = dailyHours.length;
 const target = dailyTarget;
 console.log('periodLength: ', periodLength);
@@ -52,7 +52,7 @@ const trainingDays = calculateTrainingDays(dailyHours);
 console.log('training days: ', trainingDays);
 
 let success;
-if (dailyTarget < average) {
+if (average < dailyTarget) {
      success = false;
 } else {
      success = true;
