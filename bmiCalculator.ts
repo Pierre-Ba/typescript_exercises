@@ -35,7 +35,7 @@ const parseArguments = (args: Array<string>): heightAndMass => {
   } else if (bmi >= 35 && bmi <= 39.9) {
     return "Not normal(obesity class 2)";
   } else if (bmi >= 40) {
-    return "Not normal(obesity class 3)"
+    return "Not normal(obesity class 3)";
   } else {
     return "Check the values you provided. It doesn't seem like they fall in any category";
   }
