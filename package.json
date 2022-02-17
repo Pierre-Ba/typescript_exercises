@@ -9,7 +9,8 @@
     "bmi": "ts-node bmiCalculator.ts",
     "exercise": "ts-node exerciseCalculator.ts",
     "start": "ts-node index.ts",
-    "dev": "ts-node-dev index.ts"
+    "dev": "ts-node-dev index.ts",
+    "lint": "eslint --ext .ts ."
   },
   "author": "Pierre Bajyana",
   "license": "ISC",
